@@ -1,0 +1,105 @@
+---
+title: "Chevreul"
+author: 
+  - name: Kevin Stachelek
+    affiliation:
+    - University of Southern California   
+    email: kevin.stachelek@gmail.com
+  - name: Bhavana Bhat
+    affiliation:
+    - University of Southern California   
+    email: bbhat@usc.edu
+output: 
+  BiocStyle::html_document:
+    self_contained: yes
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: show
+date: "`r doc_date()`"
+package: "`r pkg_ver('chevreulPlot')`"
+vignette: >
+  %\VignetteIndexEntry{Preprocessing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}  
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>",
+    dpi = 900,
+    out.width = "100%",
+    message = FALSE,
+    warning = FALSE,
+    crop = NULL)
+
+## Related to https://stat.ethz.ch/pipermail/bioc-devel/2020-April/016656.html
+```
+
+
+# Basics
+
+## Install `chevreulPlot`
+
+`R` is an open-source statistical environment which can be easily modified 
+to enhance its functionality via packages. `r Biocpkg("chevreulPlot")` is a `R` 
+package available via the [Bioconductor](http://bioconductor.org) repository 
+for packages. `R` can be installed on any operating system from 
+[CRAN](https://cran.r-project.org/) after which you can install 
+`r Biocpkg("chevreulPlot")` by using the following commands in your `R` session:
+
+```{r "install", eval = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("chevreulPlot")
+
+```
+
+## Required knowledge
+
+The `r Biocpkg("chevreulPlot")` package is designed for single-cell RNA sequencing
+ data. The functions included within this package are derived from other 
+ packages that have implemented the infrastructure needed for RNA-seq data
+  processing and analysis. Packages that have been instrumental in the 
+  development of `r Biocpkg("chevreulPlot")` include, 
+  `Biocpkg("SummarizedExperiment")` and `Biocpkg("scater")`.
+
+## Asking for help
+
+`R` and `Bioconductor` have a steep learning curve so it is critical to 
+learn where to ask for help. The 
+[Bioconductor support site](https://support.bioconductor.org/) is the main 
+resource for getting help: remember to use the `chevreulPlot` tag and check 
+[the older posts](https://support.bioconductor.org/tag/chevreulPlot/). 
+
+# Quick start to using `chevreulPlot`
+
+The `chevreulPlot` package contains functions to preprocess, cluster, visualize, and 
+perform other analyses on scRNA-seq data. It also contains a shiny app for easy 
+visualization and analysis of scRNA data.
+
+`chvereul` uses SingelCellExperiment (SCE) object type 
+(from `r Biocpkg("SingleCellExperiment")`) 
+to store expression and other metadata from single-cell experiments. 
+
+This package features functions capable of:
+
+* Performing Clustering at a range of resolutions and Dimensional 
+reduction of Raw Sequencing Data.
+* Visualizing scRNA data using different plotting functions.
+* Integration of multiple datasets for consistent analyses. 
+* Cell cycle state regression and labeling.
+
+```{r, message=FALSE}
+
+library("chevreulPlot")
+
+# Load the data
+library(chevreuldata)
+chevreul_sce <- human_gene_transcript_sce()
+chevreul_sce
+```
+
