@@ -63,10 +63,10 @@ plot_gene_coverage_by_var <- function(
         ...) {
     edb <- switch(organism, 
     mouse = EnsDb.Mmusculus.v79, 
-    human = EnsDb.Hsapiens.v86)
+    human = EnsDb.Hsapiens.v86,
+    edb)
 
     cell_metadata["sample_id"] <- NULL
-
 
     new_track_data <-
         cell_metadata |>
