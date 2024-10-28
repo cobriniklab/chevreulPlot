@@ -20,7 +20,7 @@ Depends:
     chevreulProcess
 Imports:
     base,
-    chevreuldata,
+    chevreuldata (>= 0.99.0),
     cluster,
     ComplexHeatmap (>= 2.5.4),
     circlize,
@@ -45,7 +45,7 @@ Imports:
     tibble,
     tidyr,
     utils,
-    wiggleplotr (>= 1.13.1),
+    wiggleplotr (>= 1.13.1)
 Suggests:
     BiocStyle,
     knitr,
@@ -63,3 +63,6 @@ biocViews:
     Transcription, SingleCell, Transcriptomics, Normalization, Preprocessing, 
     QualityControl, DimensionReduction, DataImport
 Config/testthat/edition: 3
+Remotes:  
+    https://github.com/cobriniklab/chevreuldata,
+    https://github.com/cobriniklab/chevreulProcess
