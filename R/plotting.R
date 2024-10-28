@@ -538,9 +538,10 @@ plot_all_transcripts <- function(object, features,
         features <- genes_to_transcripts(features)
     }
     features <- features[features %in% rownames(altExp(object, "transcript"))]
-    
+    main_dimreds <- reducedDims(object)
     object <- swapAltExp(object, "transcript")
     object <- logNormCounts(object)
+    reducedDims(object) <- main_dimreds
     plot_out <- map(paste0(features), ~plot_feature_on_embedding(
         object, embedding = embedding, features = .x, 
         return_plotly = FALSE, ...), ...) |> set_names(features)
