@@ -17,7 +17,7 @@ output:
     toc_depth: 2
     code_folding: show
 date: "`r doc_date()`"
-package: "`r pkg_ver('chevreul')`"
+package: "`r pkg_ver('chevreulPlot')`"
 vignette: >
   %\VignetteIndexEntry{Visualization}
   %\VignetteEngine{knitr::rmarkdown}
