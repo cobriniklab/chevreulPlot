@@ -1,6 +1,3 @@
 url: https://whtns.github.io/chevreulPlot/
 template:
   bootstrap: 5
-articles:
-  chevreulPlot: chevreulPlot.html
-  visualization: visualization.html
