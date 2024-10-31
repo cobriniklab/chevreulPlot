@@ -1,0 +1,10 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  chevreulPlot: chevreulPlot.html
+  visualization: visualization.html
+last_built: 2024-10-31T22:43Z
+urls:
+  reference: https://whtns.github.io/chevreulPlot/reference
+  article: https://whtns.github.io/chevreulPlot/articles
