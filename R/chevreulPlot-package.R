@@ -5,6 +5,7 @@
 #' @importFrom chevreuldata human_gene_transcript_sce
 #' @importFrom circlize colorRamp2
 #' @importFrom cluster agnes
+#' @importFrom clustree clustree
 #' @importFrom ComplexHeatmap draw
 #' @importFrom ComplexHeatmap Heatmap
 #' @importFrom ComplexHeatmap HeatmapAnnotation
