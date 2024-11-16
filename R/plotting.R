@@ -35,10 +35,6 @@ enframe_markers <- function(marker_table) {
 #' 
 #' # static mode
 #' plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = FALSE)
-#'
-#' # interactive plotly plot
-#' plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = TRUE)
-#'
 plot_colData_on_embedding <- function(object, group = "batch", 
                      embedding = "UMAP", dims = c(1, 2), 
                      highlight = NULL,  
@@ -284,9 +280,6 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
 #' 
 #' data(small_example_dataset)
 #' small_example_dataset <- sce_calcn(small_example_dataset)
-#' # interactive plotly
-#' plot_colData_histogram((small_example_dataset), return_plotly = TRUE)
-#'
 #' # static plot
 #' plot_colData_histogram((small_example_dataset), return_plotly = FALSE)
 plot_colData_histogram <- function(object, group_by = NULL, fill_by = NULL, 

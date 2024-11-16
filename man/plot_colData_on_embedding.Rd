@@ -45,8 +45,4 @@ data(small_example_dataset)
 
 # static mode
 plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = FALSE)
-
-# interactive plotly plot
-plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = TRUE)
-
 }

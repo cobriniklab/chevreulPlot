@@ -33,9 +33,6 @@ Draw a box plot for read count data of a metadata variable
 
 data(small_example_dataset)
 small_example_dataset <- sce_calcn(small_example_dataset)
-# interactive plotly
-plot_colData_histogram((small_example_dataset), return_plotly = TRUE)
-
 # static plot
 plot_colData_histogram((small_example_dataset), return_plotly = FALSE)
 }
