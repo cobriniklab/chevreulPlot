@@ -64,6 +64,7 @@
 #' @importFrom scater plotExpression
 #' @importFrom scater plotReducedDim
 #' @importFrom scran getTopHVGs
+#' @importFrom scuttle logNormCounts
 #' @importFrom stats as.dendrogram
 #' @importFrom stats dist
 #' @importFrom stats hclust
