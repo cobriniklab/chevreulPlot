@@ -458,8 +458,8 @@ plot_transcript_composition <- function(object, gene_symbol,
                                         drop_zero = FALSE) {
     
     data_env <- new.env(parent = emptyenv())
-    data("grch38", envir = data_env, package = "chevreul")
-    data("grch38_tx2gene", envir = data_env, package = "chevreul")
+    data("grch38", envir = data_env, package = "chevreulPlot")
+    data("grch38_tx2gene", envir = data_env, package = "chevreulPlot")
     grch38 <- data_env[["grch38"]]
     grch38_tx2gene <- data_env[["grch38_tx2gene"]]
     
