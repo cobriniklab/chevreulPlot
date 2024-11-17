@@ -59,6 +59,7 @@ a ggplot with coverage faceted by group_by
 Plot BigWig coverage for genes of interest colored by a given variable
 }
 \examples{
+data("tiny_sce")
 tiny_sce <- tiny_sce[,c("ds20181001-0001", "ds20181001-0173")]
 
 cell_metadata <- get_colData(tiny_sce) |> 

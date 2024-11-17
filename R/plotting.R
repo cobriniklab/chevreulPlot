@@ -67,9 +67,6 @@ plot_colData_on_embedding <- function(object, group = "batch",
 #' @param plotly_plot  A plotly plot
 #' @param width Default set to '600'
 #' @param height Default set to '700'
-#' @export
-#'
-#' @noRd
 plotly_settings <- function(plotly_plot, width = 600, height = 700) {
     plotly_plot |>
         layout(dragmode = "lasso") |>
