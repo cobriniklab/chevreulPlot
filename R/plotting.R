@@ -272,8 +272,8 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
 #' plot_colData_histogram((small_example_dataset), return_plotly = FALSE)
 plot_colData_histogram <- function(object, group_by = NULL, fill_by = NULL, 
                            yscale = "linear", return_plotly = FALSE) {
-    group_by <- group_by %||% glue("nCount_{mainExpName(object)}")
-    fill_by <- fill_by %||% glue("nCount_{mainExpName(object)}")
+    group_by <- group_by %||% paste0("nCount_", mainExpName(object))
+    fill_by <- fill_by %||% paste0("nCount_", mainExpName(object))
     
     sce_tbl <- rownames_to_column(
         get_colData(object), "SID") |> select(SID, 
@@ -503,7 +503,6 @@ plot_transcript_composition <- function(object, gene_symbol,
 #' @param features gene or vector of transcripts
 #' @param embedding umap
 #' @param from_gene whether to look up transcripts for an input gene
-#' @param combine TRUE
 #' @param ... additional arguments passed to plot_feature_on_embedding
 #'
 #' @return a list of embedding plots colored by a feature of interest
@@ -514,7 +513,7 @@ plot_transcript_composition <- function(object, gene_symbol,
 #' 
 plot_all_transcripts <- function(object, features, 
                                  embedding = "UMAP", 
-                                 from_gene = TRUE, combine = FALSE, ...) {
+                                 from_gene = TRUE, ...) {
     if (from_gene) {
         features <- genes_to_transcripts(features)
     }
@@ -526,8 +525,5 @@ plot_all_transcripts <- function(object, features,
     plot_out <- map(paste0(features), ~plot_feature_on_embedding(
         object, embedding = embedding, features = .x, 
         return_plotly = FALSE, ...), ...) |> set_names(features)
-    if (combine) {
-        plot_out <- wrap_plots(plot_out)
-    }
     return(plot_out)
 }

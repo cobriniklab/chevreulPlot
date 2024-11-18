@@ -34,7 +34,7 @@ cell_metadata}
 
 \item{values_of_interest}{values of interest}
 
-\item{organism}{Organism}
+\item{organism}{default human}
 
 \item{edb}{ensembldb object}
 

@@ -6,7 +6,7 @@
 \alias{chevreulPlot-package}
 \title{chevreulPlot: Plots used in the chevreul package}
 \description{
-Tools for managing SingleCellExperiment objects as projects. Includes functions for analysis and visualization of single-cell data. Also included is a shiny app for visualization of pre-processed scRNA data. Supported by NIH grants R01CA137124 and R01EY026661 to David Cobrinik.
+Tools for plotting SingleCellExperiment objects in the chevreul package. Includes functions for analysis and visualization of single-cell data. Supported by NIH grants R01CA137124 and R01EY026661 to David Cobrinik.
 }
 \seealso{
 Useful links:

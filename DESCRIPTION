@@ -1,18 +1,17 @@
 Type: Package
 Package: chevreulPlot
 Title: Plots used in the chevreul package
-Version: 0.99.12
+Version: 0.99.13
 Authors@R: c(
     person("Kevin", "Stachelek", , "kevin.stachelek@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2085-695X")),
     person("Bhavana", "Bhat", , "bhavanabhat29@gmail.com", role = "aut")
     )
-Description: Tools for managing SingleCellExperiment objects as projects. 
+Description: Tools for plotting SingleCellExperiment objects in the chevreul package. 
     Includes functions for analysis and visualization of single-cell data. 
-    Also included is a shiny app for visualization of pre-processed scRNA data.
     Supported by NIH grants R01CA137124 and R01EY026661 to David Cobrinik.
 License: MIT + file LICENSE
 URL: https://github.com/whtns/chevreulPlot, https://whtns.github.io/chevreulPlot/
-Date: 2024-03-24
+Date: 2024-11-17
 BugReports: https://github.com/cobriniklab/chevreulPlot/issues
 Depends:
     R (>= 4.4.0),
@@ -26,13 +25,10 @@ Imports:
     circlize,
     dplyr,
     EnsDb.Hsapiens.v86,
-    EnsDb.Mmusculus.v79,
     forcats,
     fs,
     ggplot2,
-    glue,
     grid,
-    patchwork,
     plotly,
     purrr,
     S4Vectors,
@@ -42,7 +38,6 @@ Imports:
     scuttle,
     stats,
     stringr,
-    SummarizedExperiment,
     tibble,
     tidyr,
     utils,

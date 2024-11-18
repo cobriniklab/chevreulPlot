@@ -9,7 +9,7 @@
 #' cell_metadata
 #' @param group_by Variable to color by
 #' @param values_of_interest values of interest
-#' @param organism Organism
+#' @param organism default human
 #' @param edb ensembldb object
 #' @param heights The heights of each row in the grid of plot
 #' @param scale_y whether to scale coverage
@@ -63,7 +63,6 @@ plot_gene_coverage_by_var <- function(
         summarize_transcripts = FALSE,
         ...) {
     edb <- switch(organism, 
-    mouse = EnsDb.Mmusculus.v79, 
     human = EnsDb.Hsapiens.v86,
     edb)
 
