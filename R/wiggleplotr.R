@@ -28,7 +28,7 @@
 #' cell_metadata <- get_colData(tiny_sce) |> 
 #'     tibble::rownames_to_column('cell') |> 
 #'     dplyr::group_by(batch) |> 
-#'     slice_head(n = 1) |> 
+#'     dplyr::slice_head(n = 1) |> 
 #'     tibble::column_to_rownames("cell")
 #' 
 #' bigwig_db <- system.file("extdata", "bw-files.db", package= "chevreulPlot")

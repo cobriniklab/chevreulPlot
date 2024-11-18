@@ -59,6 +59,7 @@ plot_colData_on_embedding <- function(object, group = "batch",
     return(plotly_plot)
 }
 
+
 #' Plotly settings
 #'
 #' Change settings of a plotly plot
@@ -66,6 +67,8 @@ plot_colData_on_embedding <- function(object, group = "batch",
 #' @param plotly_plot  A plotly plot
 #' @param width Default set to '600'
 #' @param height Default set to '700'
+#'
+#' @return a plotly plot with altered settings
 plotly_settings <- function(plotly_plot, width = 600, height = 700) {
     plotly_plot |>
         layout(dragmode = "lasso") |>
