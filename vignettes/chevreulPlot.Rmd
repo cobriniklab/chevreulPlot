@@ -103,3 +103,6 @@ chevreul_sce <- human_gene_transcript_sce()
 chevreul_sce
 ```
 
+```{r}
+sessionInfo()
+```
