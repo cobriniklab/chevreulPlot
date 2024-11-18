@@ -58,30 +58,3 @@ a ggplot with coverage faceted by group_by
 \description{
 Plot BigWig coverage for genes of interest colored by a given variable
 }
-\examples{
-data("tiny_sce")
-tiny_sce <- tiny_sce[,c("ds20181001-0001", "ds20181001-0173")]
-
-cell_metadata <- get_colData(tiny_sce) |> 
-    tibble::rownames_to_column('cell') |> 
-    dplyr::group_by(batch) |> 
-    dplyr::slice_head(n = 1) |> 
-    tibble::column_to_rownames("cell")
-
-bigwig_db <- system.file("extdata", "bw-files.db", package= "chevreulPlot")
-
-bigwig_tbl <- load_bigwigs(tiny_sce, bigwig_db)
-
-plot_gene_coverage_by_var(
-    genes_of_interest = "NRL",
-    cell_metadata,
-    bigwig_tbl,
-    group_by = "batch",
-    organism = "human",
-    heights = c(3, 1),
-    scale_y = "log10",
-    reverse_x = FALSE,
-    summarize_transcripts = FALSE,
-    rescale_introns = TRUE)
-
-}
