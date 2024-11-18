@@ -78,6 +78,7 @@
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_subset
 #' @importFrom stringr str_to_title
+#' @importFrom stringr str_wrap
 #' @importFrom tibble column_to_rownames
 #' @importFrom tibble deframe
 #' @importFrom tibble enframe
