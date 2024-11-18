@@ -31,9 +31,12 @@
 #'     dplyr::slice_head(n = 1) |> 
 #'     tibble::column_to_rownames("cell")
 #' 
-#' bigwig_db <- system.file("extdata", "bw-files.db", package= "chevreulPlot")
-#' 
-#' bigwig_tbl <- load_bigwigs(tiny_sce, bigwig_db) |> 
+#' bigwig_tbl <- tibble::tibble(
+#' name = c(
+#' "ds20181001-0001_Aligned.sortedByCoord.out.bw", 
+#' "ds20181001-0173_Aligned.sortedByCoord.out.bw"), 
+#' sample_id = c("ds20181001-0001", "ds20181001-0173")) |> 
+#' dplyr::mutate(bigWig = name) |> 
 #' dplyr::mutate(bigWig = fs::path(
 #'     system.file("extdata", package = "chevreulPlot"),
 #'     bigWig))
