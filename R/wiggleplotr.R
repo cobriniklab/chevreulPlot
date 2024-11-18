@@ -33,7 +33,10 @@
 #' 
 #' bigwig_db <- system.file("extdata", "bw-files.db", package= "chevreulPlot")
 #' 
-#' bigwig_tbl <- load_bigwigs(tiny_sce, bigwig_db)
+#' bigwig_tbl <- load_bigwigs(tiny_sce, bigwig_db) |> 
+#' dplyr::mutate(bigWig = fs::path(
+#'     system.file("extdata", package = "chevreulPlot"),
+#'     bigWig))
 #' 
 #' plot_gene_coverage_by_var(
 #'     genes_of_interest = "NRL",
