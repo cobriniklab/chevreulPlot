@@ -22,6 +22,7 @@
 #' @importFrom dplyr pull
 #' @importFrom dplyr rename
 #' @importFrom dplyr select
+#' @importFrom dplyr slice_head
 #' @importFrom dplyr summarize
 #' @importFrom dplyr top_n
 #' @importFrom EnsDb.Hsapiens.v86 EnsDb.Hsapiens.v86

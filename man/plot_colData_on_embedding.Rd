@@ -28,8 +28,6 @@ plot_colData_on_embedding(
 \item{return_plotly}{Convert plot to interactive web-based graph}
 
 \item{...}{extra parameters passed to ggplot}
-
-\item{pt.size}{Adjust point size on the plot}
 }
 \value{
 a ggplot

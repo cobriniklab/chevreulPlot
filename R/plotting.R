@@ -22,7 +22,6 @@ enframe_markers <- function(marker_table) {
 #' @param group Name of one or more metadata columns to group (color) cells by
 #' @param dims Dimensions to plot, must be a two-length numeric vector
 #' @param highlight A list of vectors of cells to highlight
-#' @param pt.size Adjust point size on the plot
 #' @param return_plotly Convert plot to interactive web-based graph
 #' @param ... extra parameters passed to ggplot
 #'
