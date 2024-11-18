@@ -1,16 +1,3 @@
-#' Enframe Markers
-#'
-#' @param marker_table a table of marker genes
-#'
-#' @return a table of marker genes
-enframe_markers <- function(marker_table) {
-    marker_table |>
-        select(Gene.Name, Cluster) |>
-        mutate(rn = row_number()) |>
-        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
-        select(-rn)
-}
-
 #' Plot Metadata Variables
 #'
 #' Plots static or interactive plot where each point represents a cell metadata
@@ -93,8 +80,8 @@ plotly_settings <- function(plotly_plot, width = 600, height = 700) {
 #' @return a violin plot
 #' @export
 #' @examples
-#' data("small_example_dataset")
-#' plot_violin(small_example_dataset, "Mutation_Status", features = "Gene_0001")
+#' data("tiny_sce")
+#' plot_violin(tiny_sce, "Prep.Method", features = "NRL")
 #' 
 plot_violin <- function(object, group_by = "batch", 
                         plot_vals = NULL, features = "NRL", 
@@ -147,7 +134,6 @@ plot_feature_on_embedding <- function(object, embedding = c("UMAP", "PCA", "TSNE
     plotly_plot <- ggplotly(fp, tooltip = "cellid", height = 500) |>
         plotly_settings() |>
         toWebGL() |>
-        # partial_bundle() |>
         identity()
 
     return(plotly_plot)
@@ -188,7 +174,10 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
                                p_val_cutoff = p_val_cutoff)
     marker_table <- metadata(object)$markers[[group_by]]
     markers <- marker_table |>
-        enframe_markers() |>
+        select(Gene.Name, Cluster) |>
+        mutate(rn = row_number()) |>
+        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
+        select(-rn) |> 
         mutate(across(everything(), .fns = as.character))
     if (!is.null(hide_technical)) {
         markers <- map(markers, c)

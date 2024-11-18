@@ -34,7 +34,7 @@ Plots a Violin plot of a single data (gene expression, metrics, etc.)
 grouped by a metadata variable
 }
 \examples{
-data("small_example_dataset")
-plot_violin(small_example_dataset, "Mutation_Status", features = "Gene_0001")
+data("tiny_sce")
+plot_violin(tiny_sce, "Prep.Method", features = "NRL")
 
 }

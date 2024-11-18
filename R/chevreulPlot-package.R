@@ -21,6 +21,7 @@
 #' @importFrom dplyr one_of
 #' @importFrom dplyr pull
 #' @importFrom dplyr rename
+#' @importFrom dplyr row_number
 #' @importFrom dplyr select
 #' @importFrom dplyr slice_head
 #' @importFrom dplyr summarize
@@ -83,6 +84,7 @@
 #' @importFrom tibble enframe
 #' @importFrom tibble rownames_to_column
 #' @importFrom tidyr drop_na
+#' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyr unite
 #' @importFrom utils capture.output
@@ -95,8 +97,4 @@
 #' @import chevreulProcess
 #' @import ggplot2
 #' @import SingleCellExperiment
-#' @import SummarizedExperiment
-#' @import dplyr
-#' @import stringr
-#' @import tidyr
 NULL

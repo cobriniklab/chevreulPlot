@@ -13,6 +13,9 @@ plotly_settings(plotly_plot, width = 600, height = 700)
 
 \item{height}{Default set to '700'}
 }
+\value{
+a plotly plot with altered settings
+}
 \description{
 Change settings of a plotly plot
 }
