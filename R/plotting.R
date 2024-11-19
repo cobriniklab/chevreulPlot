@@ -118,6 +118,8 @@ plot_violin <- function(object, group_by = "batch",
 #'
 plot_feature_on_embedding <- function(object, embedding = c("UMAP", "PCA", "TSNE"), 
                          features, dims = c(1, 2), return_plotly = FALSE, ...) {
+    embedding <- match.arg(embedding)
+    
     embedding <- toupper(embedding)
 
     metadata <- get_colData(object)
