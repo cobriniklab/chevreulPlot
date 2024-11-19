@@ -83,13 +83,13 @@ investigation.
 
 The `plot_colData_histogram` function displays a histogram of cell read counts colored 
 according to a categorical variable using the argument `fill_by`. Here we can 
-see that read counts for this dataset are not distinctly different depending on
-the method of organoid preparation used (Kuwahara or Zhong)
+see that read counts for this dataset are distinctly different depending on
+the sequencing batch
 
 ```{r}
 plot_colData_histogram(chevreul_sce,
-    group_by = "nCount_RNA",
-    fill_by = "Prep.Method"
+    group_by = "nCount_Gene",
+    fill_by = "batch"
 )
 ```
 
