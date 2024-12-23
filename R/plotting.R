@@ -176,11 +176,8 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
                                p_val_cutoff = p_val_cutoff)
     marker_table <- metadata(object)$markers[[group_by]]
     markers <- marker_table |>
-        select(Gene.Name, Cluster) |>
-        mutate(rn = row_number()) |>
-        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
-        select(-rn) |> 
-        mutate(across(everything(), .fns = as.character))
+        enframe_markers()
+    
     if (!is.null(hide_technical)) {
         markers <- map(markers, c)
         if (hide_technical == "pseudo") {
@@ -528,4 +525,18 @@ plot_all_transcripts <- function(object, features,
         object, embedding = embedding, features = .x, 
         return_plotly = FALSE, ...), ...) |> set_names(features)
     return(plot_out)
+}
+
+#' Enframe Cluster Markers
+#'
+#' @param tbl a tibble of marker genes
+#'
+#' @return a pivoted tibble of marker genes
+enframe_markers <- function(tbl){
+    tbl |> 
+    select(Gene.Name, Cluster) |>
+        mutate(rn = row_number()) |>
+        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
+        select(-rn) |> 
+        mutate(across(everything(), .fns = as.character))
 }
