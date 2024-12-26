@@ -81,7 +81,7 @@ The `chevreulPlot` package contains functions to preprocess, cluster, visualize,
 perform other analyses on scRNA-seq data. It also contains a shiny app for easy 
 visualization and analysis of scRNA data.
 
-`chevreul` uses SingelCellExperiment (SCE) object type 
+`chevreulPlot` uses SingelCellExperiment (SCE) object type 
 (from `r Biocpkg("SingleCellExperiment")`) 
 to store expression and other metadata from single-cell experiments. 
 
@@ -93,3 +93,8 @@ reduction of Raw Sequencing Data.
 * Integration of multiple datasets for consistent analyses. 
 * Cell cycle state regression and labeling.
 
+
+
+```{r}
+sessionInfo()
+```

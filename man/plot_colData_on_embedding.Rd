@@ -28,8 +28,6 @@ plot_colData_on_embedding(
 \item{return_plotly}{Convert plot to interactive web-based graph}
 
 \item{...}{extra parameters passed to ggplot}
-
-\item{pt.size}{Adjust point size on the plot}
 }
 \value{
 a ggplot
@@ -45,8 +43,4 @@ data(small_example_dataset)
 
 # static mode
 plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = FALSE)
-
-# interactive plotly plot
-plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = TRUE)
-
 }

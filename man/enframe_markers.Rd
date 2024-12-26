@@ -2,16 +2,16 @@
 % Please edit documentation in R/plotting.R
 \name{enframe_markers}
 \alias{enframe_markers}
-\title{Enframe Markers}
+\title{Enframe Cluster Markers}
 \usage{
-enframe_markers(marker_table)
+enframe_markers(tbl)
 }
 \arguments{
-\item{marker_table}{a table of marker genes}
+\item{tbl}{a tibble of marker genes}
 }
 \value{
-a table of marker genes
+a pivoted tibble of marker genes
 }
 \description{
-Enframe Markers
+Enframe Cluster Markers
 }

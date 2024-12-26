@@ -1,16 +1,3 @@
-#' Enframe Markers
-#'
-#' @param marker_table a table of marker genes
-#'
-#' @return a table of marker genes
-enframe_markers <- function(marker_table) {
-    marker_table |>
-        select(Gene.Name, Cluster) |>
-        mutate(rn = row_number()) |>
-        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
-        select(-rn)
-}
-
 #' Plot Metadata Variables
 #'
 #' Plots static or interactive plot where each point represents a cell metadata
@@ -22,7 +9,6 @@ enframe_markers <- function(marker_table) {
 #' @param group Name of one or more metadata columns to group (color) cells by
 #' @param dims Dimensions to plot, must be a two-length numeric vector
 #' @param highlight A list of vectors of cells to highlight
-#' @param pt.size Adjust point size on the plot
 #' @param return_plotly Convert plot to interactive web-based graph
 #' @param ... extra parameters passed to ggplot
 #'
@@ -35,10 +21,6 @@ enframe_markers <- function(marker_table) {
 #' 
 #' # static mode
 #' plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = FALSE)
-#'
-#' # interactive plotly plot
-#' plot_colData_on_embedding(small_example_dataset, "Mutation_Status", return_plotly = TRUE)
-#'
 plot_colData_on_embedding <- function(object, group = "batch", 
                      embedding = "UMAP", dims = c(1, 2), 
                      highlight = NULL,  
@@ -64,6 +46,7 @@ plot_colData_on_embedding <- function(object, group = "batch",
     return(plotly_plot)
 }
 
+
 #' Plotly settings
 #'
 #' Change settings of a plotly plot
@@ -71,9 +54,8 @@ plot_colData_on_embedding <- function(object, group = "batch",
 #' @param plotly_plot  A plotly plot
 #' @param width Default set to '600'
 #' @param height Default set to '700'
-#' @export
 #'
-#' @noRd
+#' @return a plotly plot with altered settings
 plotly_settings <- function(plotly_plot, width = 600, height = 700) {
     plotly_plot |>
         layout(dragmode = "lasso") |>
@@ -98,8 +80,8 @@ plotly_settings <- function(plotly_plot, width = 600, height = 700) {
 #' @return a violin plot
 #' @export
 #' @examples
-#' data("small_example_dataset")
-#' plot_violin(small_example_dataset, "Mutation_Status", features = "Gene_0001")
+#' data("tiny_sce")
+#' plot_violin(tiny_sce, "Prep.Method", features = "NRL")
 #' 
 plot_violin <- function(object, group_by = "batch", 
                         plot_vals = NULL, features = "NRL", 
@@ -136,6 +118,8 @@ plot_violin <- function(object, group_by = "batch",
 #'
 plot_feature_on_embedding <- function(object, embedding = c("UMAP", "PCA", "TSNE"), 
                          features, dims = c(1, 2), return_plotly = FALSE, ...) {
+    embedding <- match.arg(embedding)
+    
     embedding <- toupper(embedding)
 
     metadata <- get_colData(object)
@@ -152,7 +136,6 @@ plot_feature_on_embedding <- function(object, embedding = c("UMAP", "PCA", "TSNE
     plotly_plot <- ggplotly(fp, tooltip = "cellid", height = 500) |>
         plotly_settings() |>
         toWebGL() |>
-        # partial_bundle() |>
         identity()
 
     return(plotly_plot)
@@ -193,8 +176,8 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
                                p_val_cutoff = p_val_cutoff)
     marker_table <- metadata(object)$markers[[group_by]]
     markers <- marker_table |>
-        enframe_markers() |>
-        mutate(across(everything(), .fns = as.character))
+        enframe_markers()
+    
     if (!is.null(hide_technical)) {
         markers <- map(markers, c)
         if (hide_technical == "pseudo") {
@@ -284,15 +267,12 @@ plot_marker_features <- function(object, group_by = "batch", num_markers = 5,
 #' 
 #' data(small_example_dataset)
 #' small_example_dataset <- sce_calcn(small_example_dataset)
-#' # interactive plotly
-#' plot_colData_histogram((small_example_dataset), return_plotly = TRUE)
-#'
 #' # static plot
 #' plot_colData_histogram((small_example_dataset), return_plotly = FALSE)
 plot_colData_histogram <- function(object, group_by = NULL, fill_by = NULL, 
                            yscale = "linear", return_plotly = FALSE) {
-    group_by <- group_by %||% glue("nCount_{mainExpName(object)}")
-    fill_by <- fill_by %||% glue("nCount_{mainExpName(object)}")
+    group_by <- group_by %||% paste0("nCount_", mainExpName(object))
+    fill_by <- fill_by %||% paste0("nCount_", mainExpName(object))
     
     sce_tbl <- rownames_to_column(
         get_colData(object), "SID") |> select(SID, 
@@ -522,7 +502,6 @@ plot_transcript_composition <- function(object, gene_symbol,
 #' @param features gene or vector of transcripts
 #' @param embedding umap
 #' @param from_gene whether to look up transcripts for an input gene
-#' @param combine TRUE
 #' @param ... additional arguments passed to plot_feature_on_embedding
 #'
 #' @return a list of embedding plots colored by a feature of interest
@@ -533,7 +512,7 @@ plot_transcript_composition <- function(object, gene_symbol,
 #' 
 plot_all_transcripts <- function(object, features, 
                                  embedding = "UMAP", 
-                                 from_gene = TRUE, combine = FALSE, ...) {
+                                 from_gene = TRUE, ...) {
     if (from_gene) {
         features <- genes_to_transcripts(features)
     }
@@ -545,8 +524,18 @@ plot_all_transcripts <- function(object, features,
     plot_out <- map(paste0(features), ~plot_feature_on_embedding(
         object, embedding = embedding, features = .x, 
         return_plotly = FALSE, ...), ...) |> set_names(features)
-    if (combine) {
-        plot_out <- wrap_plots(plot_out)
-    }
     return(plot_out)
+}
+
+#' Enframe Cluster Markers
+#'
+#' @param tbl a tibble of marker genes
+#'
+#' @return a pivoted tibble of marker genes
+enframe_markers <- function(tbl){
+    tbl[c("Gene.Name", "Cluster")] |> 
+        mutate(rn = row_number()) |>
+        pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
+        select(-rn) |> 
+        mutate(across(everything(), .fns = as.character))
 }

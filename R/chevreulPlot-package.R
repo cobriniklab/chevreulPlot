@@ -2,13 +2,13 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom chevreuldata human_gene_transcript_sce
 #' @importFrom circlize colorRamp2
 #' @importFrom cluster agnes
 #' @importFrom clustree clustree
 #' @importFrom ComplexHeatmap draw
 #' @importFrom ComplexHeatmap Heatmap
 #' @importFrom ComplexHeatmap HeatmapAnnotation
+#' @importFrom dplyr across
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr bind_rows
@@ -22,11 +22,12 @@
 #' @importFrom dplyr one_of
 #' @importFrom dplyr pull
 #' @importFrom dplyr rename
+#' @importFrom dplyr row_number
 #' @importFrom dplyr select
+#' @importFrom dplyr slice_head
 #' @importFrom dplyr summarize
 #' @importFrom dplyr top_n
 #' @importFrom EnsDb.Hsapiens.v86 EnsDb.Hsapiens.v86
-#' @importFrom EnsDb.Mmusculus.v79 EnsDb.Mmusculus.v79
 #' @importFrom forcats fct_na_value_to_level
 #' @importFrom fs dir_ls
 #' @importFrom fs path
@@ -36,7 +37,6 @@
 #' @importFrom fs path_ext_remove
 #' @importFrom fs path_ext_set
 #' @importFrom fs path_file
-#' @importFrom glue glue
 #' @importFrom grid unit
 #' @importFrom patchwork wrap_plots
 #' @importFrom plotly config
@@ -65,6 +65,7 @@
 #' @importFrom scater plotExpression
 #' @importFrom scater plotReducedDim
 #' @importFrom scran getTopHVGs
+#' @importFrom scuttle logNormCounts
 #' @importFrom stats as.dendrogram
 #' @importFrom stats dist
 #' @importFrom stats hclust
@@ -77,13 +78,19 @@
 #' @importFrom stringr str_replace_all
 #' @importFrom stringr str_subset
 #' @importFrom stringr str_to_title
+#' @importFrom stringr str_wrap
 #' @importFrom tibble column_to_rownames
 #' @importFrom tibble deframe
 #' @importFrom tibble enframe
 #' @importFrom tibble rownames_to_column
 #' @importFrom tidyr drop_na
+#' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyr unite
+#' @importFrom tidyselect all_of
+#' @importFrom tidyselect everything
+#' @importFrom tidyselect starts_with
+#' @importFrom tidyselect where
 #' @importFrom utils capture.output
 #' @importFrom utils data
 #' @importFrom utils head
@@ -94,8 +101,4 @@
 #' @import chevreulProcess
 #' @import ggplot2
 #' @import SingleCellExperiment
-#' @import SummarizedExperiment
-#' @import dplyr
-#' @import stringr
-#' @import tidyr
 NULL

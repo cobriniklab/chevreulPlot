@@ -9,7 +9,6 @@ plot_all_transcripts(
   features,
   embedding = "UMAP",
   from_gene = TRUE,
-  combine = FALSE,
   ...
 )
 }
@@ -21,8 +20,6 @@ plot_all_transcripts(
 \item{embedding}{umap}
 
 \item{from_gene}{whether to look up transcripts for an input gene}
-
-\item{combine}{TRUE}
 
 \item{...}{additional arguments passed to plot_feature_on_embedding}
 }

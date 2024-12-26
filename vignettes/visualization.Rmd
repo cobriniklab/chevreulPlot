@@ -29,12 +29,12 @@ knitr::opts_chunk$set(
     collapse = TRUE,
     comment = "#>",
     crop = NULL, ## Related to https://stat.ethz.ch/pipermail/bioc-devel/2020-April/016656.html
-    dpi = 900,
+    dpi = 100,
     out.width = "100%",
     message = FALSE,
     warning = FALSE,
-    fig.width = 10,
-    fig.height = 6
+    fig.width = 5,
+    fig.height = 3
 )
 
 ```
@@ -82,13 +82,13 @@ investigation.
 
 The `plot_colData_histogram` function displays a histogram of cell read counts colored 
 according to a categorical variable using the argument `fill_by`. Here we can 
-see that read counts for this dataset are not distinctly different depending on
-the method of organoid preparation used (Kuwahara or Zhong)
+see that read counts for this dataset are distinctly different depending on
+the sequencing batch
 
 ```{r}
 plot_colData_histogram(chevreul_sce,
-    group_by = "nCount_RNA",
-    fill_by = "Prep.Method"
+    group_by = "nCount_Gene",
+    fill_by = "batch"
 )
 ```
 
@@ -142,3 +142,6 @@ plot_transcript_composition(chevreul_sce, "NRL",
 )
 ```
 
+```{r}
+sessionInfo()
+```
