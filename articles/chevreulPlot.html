@@ -8,8 +8,8 @@
 <title>Chevreul • chevreulPlot</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Chevreul">
 </head>
@@ -21,7 +21,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">chevreulPlot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.27</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ Bhat</h4>
 California<br><a class="author_email" href="mailto:#"></a><a href="mailto:bbhat@usc.edu" class="email">bbhat@usc.edu</a>
       </address>
                   
-            <h4 data-toc-skip class="date">31 October 2024</h4>
+            <h4 data-toc-skip class="date">26 December 2024</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/cobriniklab/chevreulPlot/blob/master/vignettes/chevreulPlot.Rmd" class="external-link"><code>vignettes/chevreulPlot.Rmd</code></a></small>
       <div class="d-none name"><code>chevreulPlot.Rmd</code></div>
@@ -128,7 +128,7 @@ posts</a>.</p>
 preprocess, cluster, visualize, and perform other analyses on scRNA-seq
 data. It also contains a shiny app for easy visualization and analysis
 of scRNA data.</p>
-<p><code>chevreul</code> uses SingelCellExperiment (SCE) object type
+<p><code>chevreulPlot</code> uses SingelCellExperiment (SCE) object type
 (from <em><a href="https://bioconductor.org/packages/3.20/SingleCellExperiment" class="external-link">SingleCellExperiment</a></em>)
 to store expression and other metadata from single-cell experiments.</p>
 <p>This package features functions capable of:</p>
@@ -139,6 +139,42 @@ reduction of Raw Sequencing Data.</li>
 <li>Integration of multiple datasets for consistent analyses.</li>
 <li>Cell cycle state regression and labeling.</li>
 </ul>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.4.2 (2024-10-31)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.1 LTS</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span></span>
+<span><span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span></span>
+<span><span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; time zone: UTC</span></span>
+<span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt; [1] BiocStyle_2.34.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;  [1] digest_0.6.37       desc_1.4.3          R6_2.5.1           </span></span>
+<span><span class="co">#&gt;  [4] bookdown_0.41       fastmap_1.2.0       xfun_0.49          </span></span>
+<span><span class="co">#&gt;  [7] cachem_1.1.0        knitr_1.49          htmltools_0.5.8.1  </span></span>
+<span><span class="co">#&gt; [10] rmarkdown_2.29      lifecycle_1.0.4     cli_3.6.3          </span></span>
+<span><span class="co">#&gt; [13] sass_0.4.9          pkgdown_2.1.1       textshaping_0.4.1  </span></span>
+<span><span class="co">#&gt; [16] jquerylib_0.1.4     systemfonts_1.1.0   compiler_4.4.2     </span></span>
+<span><span class="co">#&gt; [19] tools_4.4.2         ragg_1.3.3          evaluate_1.0.1     </span></span>
+<span><span class="co">#&gt; [22] bslib_0.8.0         yaml_2.3.10         BiocManager_1.30.25</span></span>
+<span><span class="co">#&gt; [25] jsonlite_1.8.9      rlang_1.1.4         fs_1.6.5           </span></span>
+<span><span class="co">#&gt; [28] htmlwidgets_1.6.4</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
