@@ -533,8 +533,7 @@ plot_all_transcripts <- function(object, features,
 #'
 #' @return a pivoted tibble of marker genes
 enframe_markers <- function(tbl){
-    tbl |> 
-    select(Gene.Name, Cluster) |>
+    tbl[c("Gene.Name", "Cluster")] |> 
         mutate(rn = row_number()) |>
         pivot_wider(names_from = Cluster, values_from = Gene.Name) |>
         select(-rn) |> 
