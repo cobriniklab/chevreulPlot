@@ -40,7 +40,7 @@ overview of places that may help answer your question.
 ## Issues or Feature Requests
 
 Before opening a new issue or feature request, be sure to
-[search issues and pull requests](https://github.com/whtns/chevreul/issues)
+[search issues and pull requests](https://github.com/cobriniklab/chevreul/issues)
 to ensure that one does not already exist or has been implemented in the
 development version.
 

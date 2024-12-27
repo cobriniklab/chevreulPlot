@@ -11,8 +11,8 @@ Tools for plotting SingleCellExperiment objects in the chevreul package. Include
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/whtns/chevreulPlot}
-  \item \url{https://whtns.github.io/chevreulPlot/}
+  \item \url{https://github.com/cobriniklab/chevreulPlot}
+  \item \url{https://cobriniklab.github.io/chevreulPlot/}
   \item Report bugs at \url{https://github.com/cobriniklab/chevreulPlot/issues}
 }
 

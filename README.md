@@ -8,7 +8,7 @@ datasets processed as a SingleCellExperiment
 
 A demo using a human gene transcript dataset from Shayler et al. (link)
 is available
-<a href="http://cobrinik-1.saban-chla.usc.edu:8080/app/objectApp" target="_blank" rel="noopener noreferrer">here</a>
+<a href="https://docker.saban.chla.usc.edu/cobrinik/app/seuratApp/" target="_blank" rel="noopener noreferrer">here</a>
 
 There are also convenient functions for:
 
