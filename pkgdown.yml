@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   chevreulPlot: chevreulPlot.html
   visualization: visualization.html
-last_built: 2024-12-27T16:55Z
+last_built: 2024-12-27T17:21Z
 urls:
-  reference: https://whtns.github.io/chevreulPlot/reference
-  article: https://whtns.github.io/chevreulPlot/articles
+  reference: https://cobriniklab.github.io/chevreulPlot/reference
+  article: https://cobriniklab.github.io/chevreulPlot/articles
