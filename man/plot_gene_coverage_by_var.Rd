@@ -10,7 +10,7 @@ plot_gene_coverage_by_var(
   bigwig_tbl,
   group_by = "batch",
   values_of_interest = NULL,
-  organism = "human",
+  organism = c("human", "mouse"),
   edb = NULL,
   heights = c(3, 1),
   scale_y = "log10",
@@ -34,7 +34,7 @@ cell_metadata}
 
 \item{values_of_interest}{values of interest}
 
-\item{organism}{default human}
+\item{organism}{human (default) or mouse}
 
 \item{edb}{ensembldb object}
 
