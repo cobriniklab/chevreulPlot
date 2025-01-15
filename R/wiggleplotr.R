@@ -9,7 +9,7 @@
 #' cell_metadata
 #' @param group_by Variable to color by
 #' @param values_of_interest values of interest
-#' @param organism default human
+#' @param organism human (default) or mouse
 #' @param edb ensembldb object
 #' @param heights The heights of each row in the grid of plot
 #' @param scale_y whether to scale coverage
@@ -26,7 +26,7 @@ plot_gene_coverage_by_var <- function(
         bigwig_tbl,
         group_by = "batch",
         values_of_interest = NULL,
-        organism = "human",
+        organism = c("human", "mouse"),
         edb = NULL,
         heights = c(3, 1),
         scale_y = "log10",
@@ -35,9 +35,13 @@ plot_gene_coverage_by_var <- function(
         end = NULL,
         summarize_transcripts = FALSE,
         ...) {
-    edb <- switch(organism, 
-    human = EnsDb.Hsapiens.v86,
-    edb)
+    organism <- match.arg(organism)
+    if (missing(edb)) {
+        edb <- switch(organism,
+                      mouse = EnsDb.Mmusculus.v79,
+                      human = EnsDb.Hsapiens.v86
+        )
+    }
 
     cell_metadata["sample_id"] <- NULL
 
