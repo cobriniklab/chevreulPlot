@@ -17,20 +17,20 @@ There are also convenient functions for:
 - Louvain Clustering at a Range of Resolutions
 - Cell cycle state regression and labeling
 
-> \[!WARNING\] Chevreul was designed for full-length smart-seq based
+> \[!WARNING\] chevreulPlot was designed for full-length smart-seq based
 > single cell data. Default settings may not be appropriate for droplet
 > (10x) data, though most can be adjusted. Keep in mind best practices
 > regarding normalization, dimensional reduction, etc. when using.
 
 ## Installation
 
-You can install the released version of chevreul from
+You can install the released version of chevreulPlot from
 <a href="https://github.com/whtns/chevreul" target="_blank" rel="noopener noreferrer">github</a>
 with:
 
 ### Install locally and run in three steps:
 
-You can install chevreul locally using the following steps:
+You can install chevreulPlot locally using the following steps:
 
 ``` r
 install.packages("devtools")
@@ -47,7 +47,7 @@ chevreul::create_project_db(destdir = "/your/path/to/app")
 
 ## TLDR
 
-Chevreul provides a single command to:
+chevreulPlot provides a single command to:
 
 - construct a SingleCellExperiment object.
 
