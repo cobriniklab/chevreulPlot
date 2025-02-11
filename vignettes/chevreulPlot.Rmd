@@ -98,9 +98,7 @@ reduction of Raw Sequencing Data.
 library("chevreulPlot")
 
 # Load the data
-library(chevreuldata)
-chevreul_sce <- human_gene_transcript_sce()
-chevreul_sce
+data("small_example_dataset")
 ```
 
 ```{r}
