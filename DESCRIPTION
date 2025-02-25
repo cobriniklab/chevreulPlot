@@ -1,7 +1,7 @@
 Type: Package
 Package: chevreulPlot
 Title: Plots used in the chevreulPlot package
-Version: 0.99.32
+Version: 0.99.33
 Authors@R: c(
     person("Kevin", "Stachelek", , "kevin.stachelek@gmail.com", 
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2085-695X")),
@@ -23,7 +23,6 @@ Depends:
     chevreulProcess
 Imports:
     base,
-    chevreuldata,
     cluster,
     ComplexHeatmap (>= 2.5.4),
     circlize,
