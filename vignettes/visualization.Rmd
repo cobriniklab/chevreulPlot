@@ -48,7 +48,6 @@ First step is to load chevreulPlot package and all other packages required
 library(chevreulPlot)
 library(scater)
 library(scran)
-library(clustree)
 library(patchwork)
 
 data("small_example_dataset")

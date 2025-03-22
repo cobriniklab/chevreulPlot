@@ -70,7 +70,7 @@ By default clustering will be run at ten different resolutions between 0.2 and 2
 ```{r, cache = FALSE, eval = FALSE}
 data("small_example_dataset")
 
-clustered_sce <- clustering_workflow(small_example_dataset,
+clustered_sce <- sce_clustering_workflow(small_example_dataset,
     experiment_name = "sce_hu_trans",
     organism = "human"
 )
