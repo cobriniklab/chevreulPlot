@@ -16,12 +16,11 @@ URL: https://github.com/cobriniklab/chevreulPlot, https://cobriniklab.github.io/
 Date: 2024-03-24
 BugReports: https://github.com/cobriniklab/chevreulPlot/issues
 Depends:
-    R (>= 4.4.0),
+    R (>= 4.3.0),
     SingleCellExperiment,
     chevreulProcess
 Imports:
     base,
-    chevreuldata (>= 0.99.0),
     cluster,
     ComplexHeatmap (>= 2.5.4),
     circlize,
@@ -65,5 +64,4 @@ biocViews:
     QualityControl, DimensionReduction, DataImport
 Config/testthat/edition: 3
 Remotes:  
-    https://github.com/cobriniklab/chevreuldata,
     https://github.com/cobriniklab/chevreulProcess

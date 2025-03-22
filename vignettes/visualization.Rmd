@@ -51,8 +51,8 @@ library(scran)
 library(clustree)
 library(patchwork)
 
-library(chevreuldata)
-chevreul_sce <- human_gene_transcript_sce()
+data("small_example_dataset")
+
 ```
 
 
@@ -68,9 +68,9 @@ When plotting only one feature, output is identical to
 `SingleCellExperiment::FeaturePlot` 
  
 ```{r}
-plot_feature_on_embedding(chevreul_sce,
+plot_feature_on_embedding(small_example_dataset,
     embedding = "UMAP",
-    features = "NRL", return_plotly = FALSE
+    features = "Gene_0001", return_plotly = FALSE
 )
 ```
 
@@ -86,9 +86,9 @@ see that read counts for this dataset are distinctly different depending on
 the sequencing batch
 
 ```{r}
-plot_colData_histogram(chevreul_sce,
-    group_by = "nCount_Gene",
-    fill_by = "batch"
+plot_colData_histogram(small_example_dataset,
+    group_by = "sizeFactor",
+    fill_by = "Treatment"
 )
 ```
 
@@ -101,8 +101,8 @@ The group argument specifies the colData variable by which to group the cells
 by, by default, "batch".
 
 ```{r}
-plot_colData_on_embedding(chevreul_sce,
-    group = "gene_snn_res.0.2",
+plot_colData_on_embedding(small_example_dataset,
+    group = "gene_snn_res.1",
     embedding = "UMAP"
 )
 ```
@@ -124,8 +124,8 @@ feature.
 
 
 ```{r}
-plot_marker_features(chevreul_sce,
-    group_by = "gene_snn_res.0.2",
+plot_marker_features(small_example_dataset,
+    group_by = "gene_snn_res.1",
     marker_method = "wilcox"
 )
 ```
@@ -136,10 +136,15 @@ plot_marker_features(chevreul_sce,
 map to each transcript. The gene of interest is specified by the argument 
 'gene_symbol'. 
  
-```{r, results=FALSE, echo=FALSE}
-plot_transcript_composition(chevreul_sce, "NRL",
-    group.by = "gene_snn_res.0.2", standardize = TRUE
+```{r}
+
+data("tiny_sce")
+
+transcript_composition <- plot_transcript_composition(tiny_sce, "NRL",
+    group.by = "gene_snn_res.1", standardize = TRUE
 )
+
+print(transcript_composition$plot)
 ```
 
 ```{r}
