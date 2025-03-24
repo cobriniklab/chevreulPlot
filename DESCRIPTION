@@ -8,15 +8,14 @@ Authors@R: c(
     person("Bhavana", "Bhat", , "bhavanabhat29@gmail.com", role = "aut")
     )
 Description: Tools for plotting SingleCellExperiment objects in the 
-    chevreul package. Includes functions for analysis and visualization 
-    of single-cell data. Supported by NIH grants R01CA137124 and R01EY026661 
+    Chevreul package. Supported by NIH grants R01CA137124 and R01EY026661 
     to David Cobrinik.
 License: MIT + file LICENSE
 URL: https://github.com/cobriniklab/chevreulPlot, https://cobriniklab.github.io/chevreulPlot/
 Date: 2024-03-24
 BugReports: https://github.com/cobriniklab/chevreulPlot/issues
 Depends:
-    R (>= 4.3.0),
+    R (>= 4.4.0),
     SingleCellExperiment,
     chevreulProcess
 Imports:
