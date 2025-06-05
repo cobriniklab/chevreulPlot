@@ -16,52 +16,34 @@ knitr::opts_chunk$set(
 ```
 
 
-# Chevreul
+# chevreulPlot
 
-This package includes a set of Shiny apps for exploring single cell RNA datasets processed as a SingleCellExperiment
+This package enables plotting of single cell RNA datasets processed as SingleCellExperiments
 
-A demo using a human gene transcript dataset from Shayler et al. (link) is available <a href="http://cobrinik-1.saban-chla.usc.edu:8080/app/objectApp" target="_blank" rel="noopener noreferrer">here</a>
+A demo with a developing human retina scRNA-seq dataset from Shayler et al. is available <a href="https://cobrinik-1.saban-chla.usc.edu/shinyproxy/app/chevreul" target="_blank" rel="noopener noreferrer">here</a>
 
-There are also convenient functions for:
+This package includes a set of Shiny apps for interactive exploration of single cell RNA sequencing (scRNA-seq) datasets processed as
+<a href="https://bioconductor.org/packages/devel/bioc/vignettes/SingleCellExperiment/inst/doc/intro.html" target="_blank" rel="noopener noreferrer">SingleCellExperiments</a>
 
--   Clustering and Dimensional Reduction of Raw Sequencing Data.
--   Integration and Label Transfer
--   Louvain Clustering at a Range of Resolutions
--   Cell cycle state regression and labeling
+chevreulPlot includes tools for:
 
-> [!WARNING]
-> chevreulPlot was designed for full-length smart-seq based single cell data. Default settings may not be appropriate for droplet (10x) data, though most can be adjusted. Keep in mind best practices regarding normalization, dimensional reduction, etc. when using. 
+-   Interactive data analysis and visualization 
 
-## Installation
+## Installation instructions
 
-You can install the released version of chevreulPlot from <a href="https://github.com/whtns/chevreul" target="_blank" rel="noopener noreferrer">github</a> with:
+chevreulPlot depends on a minimum R version 4.4. chevreulPlot loads the [Bioconductor](http://bioconductor.org/) package 
 
-### Install locally and run in three steps:
+[`chevreulProcess`](https://github.com/cobriniklab/chevreulProcess)
 
-You can install chevreulPlot locally using the following steps:
+which enables standardized processing of SingleCellExperiments.
 
-```{r, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("whtns/chevreul")
-chevreul::create_project_db()
+`chevreulPlot` depends on a minimum R version >=4.4
+Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `chevreulPlot` and its dependencies using the following code:
+
+```{r 'install_dev', eval = FALSE}
+install.packages("BiocManager")
+BiocManager::install("chevreulPlot")
 ```
-
-You can also customize the location of the app using these steps:
-
-```{r, eval=FALSE}
-devtools::install_github("whtns/chevreul")
-chevreul::create_project_db(destdir = "/your/path/to/app")
-```
-
-## TLDR
-
-chevreulPlot provides a single command to:
-
--   construct a SingleCellExperiment object.
-
--   filter genes by minimum expression and ubiquity
-
--   normalize and scale expression by any of several methods packaged in SingleCellExperiment
 
 ## Run clustering on a single object
 
@@ -81,3 +63,52 @@ clustered_sce <- sce_clustering_workflow(small_example_dataset,
 ```{r, eval = FALSE}
 minimalChevreulApp(small_example_dataset)
 ```
+
+### Troubleshooting installation
+
+#### Dependency management
+
+When installing an R package like chevreulPlot with many dependencies, conflicts with existing installations can arise. This is a common issue in R package management. Here are some strategies to address this problem:
+
+1. Consider <a href="https://rstudio.github.io/renv/articles/renv.html" target="_blank" rel="noopener noreferrer">renv</a> for dependency management. This tool creates isolated environments for each project, ensuring that package versions don't conflict across different projects.
+
+2. Use the conflicted Package
+The <a href="https://conflicted.r-lib.org" target="_blank" rel="noopener noreferrer">conflicted</a> package provides an alternative conflict resolution strategy. It makes every conflict an error, forcing you to choose which function to use
+
+#### Slow internet connection
+
+When installing R packages on slow internet connections, several issues can arise, particularly with larger packages or when using functions like remotes::install_github(). Here are some strategies to address bandwidth-related problems:
+
+Set a longer timeout for downloads:
+`options(timeout = 9999999)`
+
+Specify the download method:
+`options(download.file.method = "libcurl")`
+
+## Transcript-level quantification
+
+For transcript-level analysis, users must incorporate transcript-level data into the SingleCellExperiment object as an alternative experiment before initiating the chevreulProcess processing pipeline. This step is crucial for enabling detailed exploration at the transcript level.
+
+Transcripts may be quantified using any of several available methods, including alignment-free methods best used with well-annotated transcriptomes (Salmon, Kallisto), alignment-based methods best used to detect novel isoforms (StringTie2), or long-read methods for use with long-read sequencing data (IsoQuant). 
+
+## Integration implementation 
+
+The `sce_integrate()` function in chevreulProcess implements integration (batch correction) of scRNA-seq datasets by using the <a href="https://bioconductor.org/packages/devel/bioc/vignettes/batchelor/inst/doc/correction.html" target="_blank" rel="noopener noreferrer">batchelor</a> package. 
+
+It accepts a list of SingleCellExperiment objects as input for integration and stores the corresponding batch information in a metadata field named 'batch'. By default, it employs batchelor's `correctExperiments` function to preserve pre-existing data structures and metadata from input SingleCellExperiment objects within the integrated output.
+
+## Hardware requirements 
+
+Recommended minimum hardware requirements for running chevreulPlot are as follows:
+    
+- RAM: A minimum of 16 GB RAM is recommended for initial analysis. However, for larger datasets or more complex analyses, 64 GB or more is advisable.
+- CPU: Having multiple cores can be beneficial for parallel processing. 
+- Storage: Sufficient storage space is necessary, especially for temporary files. The exact amount depends on the size of your datasets
+- R Version: Chevruel requires R version 4.4 or greater
+
+It's important to note that these requirements can vary based on the size and complexity of your dataset. As the number of cells increases, so do the hardware requirements. For instance: A dataset with around 8,000 cells can be analyzed with 8 GB of RAM. For larger datasets or more complex analyses, 64-128 GB of RAM can be beneficial.
+
+## Learn More
+
+To learn more about the usage of Bioconductor tools for single-cell RNA-seq analysis. Consult the book <a href="https://bioconductor.org/books/release/OSCA/" target="_blank" rel="noopener noreferrer">Orchestrating Single-Cell Analysis with Bioconductor</a>. The book walks through common workflows for the analysis of single-cell RNA-seq data (scRNA-seq). This book will show you how to make use of cutting-edge Bioconductor tools to process, analyze, visualize, and explore scRNA-seq data
+
