@@ -6,5 +6,4 @@
 
 .onLoad <- function(libname, pkgname) {
     
-    
 }
